@@ -1,0 +1,100 @@
+{
+  "entities": {
+    "ChavesPix": {
+      "title": "Chaves PIX",
+      "description": "Armazena as chaves PIX dos usuários",
+      "type": "object",
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "enum": ["CPF", "CNPJ", "E-mail", "Telefone", "Aleatória"],
+          "description": "Tipo da chave PIX"
+        },
+        "chave": {
+          "type": "string",
+          "description": "O valor da chave PIX"
+        },
+        "apelido": {
+          "type": "string",
+          "description": "Apelido para identificação da chave"
+        },
+        "favorita": {
+          "type": "boolean",
+          "description": "Se a chave é favorita"
+        },
+        "userId": {
+          "type": "string",
+          "description": "ID do usuário proprietário"
+        },
+        "linkId": {
+          "type": "string",
+          "description": "ID único para o link de pagamento"
+        },
+        "linkExpiracao": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Data de expiração do link"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["tipo", "chave", "apelido", "userId"]
+    },
+    "ConfiguracoesUsuario": {
+      "title": "Configurações do Usuário",
+      "description": "Dados da empresa e personalização do usuário",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "logoUrl": {
+          "type": "string"
+        },
+        "nomeEmpresa": {
+          "type": "string"
+        },
+        "telefone": {
+          "type": "string"
+        },
+        "endereco": {
+          "type": "string"
+        },
+        "cidade": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "whatsapp": {
+          "type": "string"
+        },
+        "mostrarSeloSeguranca": {
+          "type": "boolean"
+        },
+        "corPersonalizada": {
+          "type": "string"
+        }
+      },
+      "required": ["userId"]
+    }
+  },
+  "firestore": {
+    "/chavesPix/{chaveId}": {
+      "schema": "ChavesPix",
+      "description": "Coleção de chaves PIX"
+    },
+    "/configuracoes/{userId}": {
+      "schema": "ConfiguracoesUsuario",
+      "description": "Configurações por usuário"
+    }
+  }
+}

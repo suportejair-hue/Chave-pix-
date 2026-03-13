@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow public read/write for this specific app (no auth)
+    match /chavesPix/{chaveId} {
+      allow read, write: if true;
+    }
+
+    match /configuracoes/{userId} {
+      allow read, write: if true;
+    }
+  }
+}
